@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for zhihuuser project
+# Scrapy settings for newspider project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'zhihuuser'
+BOT_NAME = 'newspider'
 
-SPIDER_MODULES = ['zhihuuser.spiders']
-NEWSPIDER_MODULE = 'zhihuuser.spiders'
+SPIDER_MODULES = ['newspider.spiders']
+NEWSPIDER_MODULE = 'newspider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'zhihuuser (+http://www.yourdomain.com)'
+#USER_AGENT = 'newspider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -27,9 +27,9 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 5
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 1
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -40,23 +40,20 @@ COOKIES_ENABLED = True
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-   #'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-   #'Accept-Language': 'en',
-   'User-Agent'	:'Mozilla/5.0 (Windows NT 6.1; W…) Gecko/20100101 Firefox/62.0',
-   'authorization': 'oauth c3cef7c66a1843f8b3a9e6a1e3160e20',
-
+   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+   'Accept-Language': 'en',
 }
-
+USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; W…) Gecko/20100101 Firefox/62.0"
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'zhihuuser.middlewares.ZhihuuserSpiderMiddleware': 543,
+#    'newspider.middlewares.NewspiderSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'zhihuuser.middlewares.ZhihuuserDownloaderMiddleware': 543,
+#    'newspider.middlewares.NewspiderDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -68,11 +65,10 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'zhihuuser.pipelines.MongoPipeline': 300,
-
+    'newspider.pipelines.NewspiderPipeline': 300,
+    'newspider.pipelines.JsonWritePipline': 300,
 
 }
-
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
@@ -93,5 +89,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-MONGO_URI='localhost'
-MONGO_DATABASE='zhihume'
