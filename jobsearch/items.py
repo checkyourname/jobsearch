@@ -8,7 +8,14 @@
 import scrapy
 
 
-class NewspiderItem(scrapy.Item):
+class JobsearchItem(scrapy.Item):
     # define the fields for your item here like:
-    categoryLink= scrapy.Field()
-    pass
+
+    company_name=scrapy.Field()
+    job_name=scrapy.Field()
+    working_city=scrapy.Field()
+    salary=scrapy.Field()
+    release_time=scrapy.Field()
+
+
+
